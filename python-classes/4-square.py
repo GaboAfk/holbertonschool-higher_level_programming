@@ -34,7 +34,7 @@ class Square:
             int: The size of the square's side.
         """
         return self._Square__size
-    
+
     @size.setter
     def size(self, value):
         """Set the size of the square.
@@ -59,16 +59,3 @@ class Square:
             int: The area of the square.
         """
         return self._Square__size ** 2
-
-
-my_square = Square(89)
-print("Area: {} for size: {}".format(my_square.area(), my_square.size))
-
-my_square.size = 3
-print("Area: {} for size: {}".format(my_square.area(), my_square.size))
-
-try:
-    my_square.size = "5 feet"
-    print("Area: {} for size: {}".format(my_square.area(), my_square.size))
-except Exception as e:
-    print(e)
