@@ -1,6 +1,26 @@
 #!/usr/bin/python3
-def matrix_divided(matrix, div):
+"""
+    matrix module
+"""
 
+
+def matrix_divided(matrix, div):
+    """matrix function, use div to divide list of lists
+
+    Args:
+        matrix (list of list): list of list of elements
+        div (int or float): divisor
+
+    Raises:
+        TypeError: matrix must be a matrix (list of lists)\
+                                of integers/floats
+        TypeError: Each row of the matrix must have the same size
+        TypeError: div must be a number
+        ZeroDivisionError: division by zero
+
+    Returns:
+        matrix(list of lists): list of lists divided by div rounded by 2 dec
+    """
     if not all(isinstance(elem, (int, float))
        for row in matrix for elem in row):
         raise TypeError("matrix must be a matrix (list of lists)\
