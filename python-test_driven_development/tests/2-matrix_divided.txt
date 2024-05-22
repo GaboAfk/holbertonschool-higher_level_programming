@@ -8,3 +8,9 @@
 >>> matrix_divided(matrix, 0)
 Traceback (most recent call last):
 ZeroDivisionError: division by zero
+
+>>> matrix = [1, "hello", 3], [4, "word", 6]
+
+>>> matrix_divided(matrix, 3)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
