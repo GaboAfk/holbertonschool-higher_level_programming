@@ -13,6 +13,8 @@ class TestMaxInteger(unittest.TestCase):
         self.assertEqual(max_integer([]), None)
         self.assertEqual(max_integer([2]), 2)
         self.assertEqual(max_integer([-5, -4, -3]), -3)
+        self.assertEqual(max_integer([-3, -4, -3]), -3)
+        self.assertEqual(max_integer([-3, -3, -3]), -3)
 
     def test_type(self):
         """test type errors
