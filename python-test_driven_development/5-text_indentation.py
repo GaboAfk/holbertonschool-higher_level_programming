@@ -20,7 +20,8 @@ def text_indentation(text):
     for letter in text:
         if space:
             space = 0
-            continue
+            if letter == " ":
+                continue
         phrase += letter
         if letter == "." or letter == "?" or letter == ":":
             print(phrase)
