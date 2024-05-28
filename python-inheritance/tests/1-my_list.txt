@@ -1,0 +1,32 @@
+>>> MyList = __import__('1-my_list').MyList
+
+>>> my_list = MyList()
+
+>>> my_list.print_sorted()
+[]
+
+>>> my_list.append(1)
+>>> my_list.print_sorted()
+[1]
+
+>>> my_list.append(-5)
+>>> my_list.print_sorted()
+[-5, 1]
+
+>>> my_list.append(-99)
+>>> my_list.print_sorted()
+[-99, -5, 1]
+
+>>> my_list = MyList(None)
+Traceback (most recent call last):
+TypeError: 'NoneType' object is not iterable
+
+>>> my_list = MyList([1, 2], [3, 4])
+Traceback (most recent call last):
+TypeError: list expected at most 1 argument, got 2
+
+>>> my_list = MyList()
+>>> my_list.append("uno")
+>>> my_list.append("dos")
+>>> my_list.print_sorted()
+['dos', 'uno']
