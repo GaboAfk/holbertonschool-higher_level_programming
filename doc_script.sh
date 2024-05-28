@@ -10,9 +10,11 @@ complete -F _autocomplete_files -o filenames read
 echo 'file.py name?'
 read -e -i "" files_to_add
 
+#files_to_add=$(echo "$files_to_add" | sed 's/\.py$//')
+
 # Function to check and print docstrings
 check_docstrings() {
-    #local module="$1"
+    local module="$1"
     python3 -c "
 
 try:
