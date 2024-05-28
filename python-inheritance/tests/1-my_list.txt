@@ -30,3 +30,8 @@ TypeError: list expected at most 1 argument, got 2
 >>> my_list.append("dos")
 >>> my_list.print_sorted()
 ['dos', 'uno']
+
+>>> my_list = MyList([4, "Betty", 2])
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+TypeError: '<' not supported between instances of 'str' and 'int'
