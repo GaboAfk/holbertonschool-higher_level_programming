@@ -13,6 +13,13 @@ read -e -i "" files_to_add
 #files_to_add=$(echo "$files_to_add" | sed 's/\.py$//')
 
 # Function to check and print docstrings
+
+python3 -c "print(__import__("$files_to_add").__doc__)"
+python3 -c "print(__import__("$files_to_add").MyClass.__doc__)"
+python3 -c "print(__import__("$files_to_add").my_function.__doc__)"
+python3 -c "print(__import__("$files_to_add").MyClass.my_function.__doc__)"
+
+
 check_docstrings() {
     local module="$1"
     python3 -c "
