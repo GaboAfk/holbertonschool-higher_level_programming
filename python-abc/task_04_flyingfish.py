@@ -24,12 +24,3 @@ class FlyingFish(Fish, Bird):
 
     def habitat(self):
         print("The flying fish lives both in water and the sky!")
-
-flying_fish = FlyingFish()
-
-flying_fish.fly()       # Debería imprimir: "The flying fish is soaring!"
-flying_fish.swim()      # Debería imprimir: "The flying fish is swimming!"
-flying_fish.habitat()   # Debería imprimir: "The flying fish lives both in water and the sky!"
-
-# Explorar el Method Resolution Order (MRO)
-print(FlyingFish.mro())
