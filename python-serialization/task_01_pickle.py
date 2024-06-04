@@ -29,9 +29,6 @@ class CustomObject():
         try:
             with open(filename, "rb") as file:
                 load = pickle.load(file)
-                res = CustomObject("x", "x", False)
-                for key in load:
-                    setattr(res, key, load[key])
-                return res
+                return cls(load["name"], load["age"], load["is_student"])
         except (FileNotFoundError, pickle.UnpicklingError):
             return None
