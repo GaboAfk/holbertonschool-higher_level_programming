@@ -30,5 +30,6 @@ class CustomObject():
             with open(filename, "rb") as file:
                 load = pickle.load(file)
                 return cls(load["name"], load["age"], load["is_student"])
-        except (FileNotFoundError, pickle.UnpicklingError):
+        except Exception as e:
+            print(f"Deserialization error: {e}")
             return None
