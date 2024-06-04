@@ -22,11 +22,6 @@ def deserialize_from_xml(filename):
     tree = ET.parse(filename)
     root = tree.getroot()
     for element in root:
-        if isinstance(element.text, int):
-            xml_data[element.tag] = int(element.text)
-        try:
-            xml_data[element.tag] = float(element.text)
-        except ValueError:
-            xml_data[element.tag] = element.text
+        xml_data[element.tag] = element.text
 
     return xml_data
