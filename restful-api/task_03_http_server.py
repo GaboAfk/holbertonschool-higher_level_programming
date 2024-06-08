@@ -35,7 +35,7 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
             self.wfile.write(msj.encode())
 
         else:
-            self.send_error(404, "Not Found", "Endpoint not found")
+            self.send_error(404, "Endpoint not found", "Not Found")
 
 
 PORT = 8000
