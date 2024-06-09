@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """HTTP Server Module
 """
-from http.server import *
+import http.server
 import json
 """import socketserver"""
 
 
-class RequestHandler(BaseHTTPRequestHandler):
+class RequestHandler(http.server.BaseHTTPRequestHandler):
     """RequestHandlerSubClass
 
     Args:
@@ -35,14 +35,20 @@ class RequestHandler(BaseHTTPRequestHandler):
             self.wfile.write(msj.encode())
 
         else:
-            msj = self.error_message_format = "404 Not Found"
-            self.send_error(404, msj)
+            msj = "404 Not Found"
+            self.send_error(404, msj.encode())
 
 
 Handler = RequestHandler
 
-server = HTTPServer(("", 8000), Handler)
-server.serve_forever()
+server = http.server.HTTPServer(("", 8000), Handler)
+try:
+    server.serve_forever()
+except KeyboardInterrupt:
+    pass
+finally:
+    server.server_close()
+    print("Server closed")
 
 """PORT = 8000
 with socketserver.TCPServer(("", PORT), Handler) as httpd:
