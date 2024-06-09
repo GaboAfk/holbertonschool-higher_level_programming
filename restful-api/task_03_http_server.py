@@ -35,8 +35,8 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
             self.wfile.write(msj.encode())
 
         else:
-            msj = "404 Not Found"
-            self.send_error(404, msj.encode())
+            msj = self.error_message_format = "404 Not Found"
+            self.send_error(404, msj)
 
 
 Handler = RequestHandler
