@@ -38,7 +38,7 @@ def add_user():
     if not username or username in users:
         return jsonify({"error": "Invalid or duplicate username"}), 400
 
-    users[username] = {"name": user_data.get("name"), "age": user_data.get("age"), "city": user_data.get("city")}
+    users[username] = user_data
 
     return jsonify({"message": "User added", "user": users[username]}), 201
 
