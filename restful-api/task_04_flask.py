@@ -35,8 +35,8 @@ def add_user():
     user_data = request.get_json()
     username = user_data.get("username")
 
-    if not username or username in users:
-        return jsonify({"error": "Invalid or duplicate username"}), 400
+    if not username:
+        return jsonify({"error": "Invalid username"}), 400
 
     users[username] = user_data
 
