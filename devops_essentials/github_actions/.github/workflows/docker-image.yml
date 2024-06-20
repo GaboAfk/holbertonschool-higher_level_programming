@@ -1,0 +1,17 @@
+name: Build and Push Docker Image
+on: [push]
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build Docker Image
+        run: docker build -t ghcr.io/gaboafk/github_image_selfcreate .
+      - name: Log in to Docker
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.CR_PAT }}
+      - name: Push Docker Img
+        run: docker push ghcr.io/gaboafk/github_image_selfcreate
