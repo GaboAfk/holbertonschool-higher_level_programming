@@ -10,8 +10,8 @@ app.config["JWT_SECRET_KEY"] = "1234"
 jwt = JWTManager(app)
 
 users = {
-      "user": {"username": "user1", "password": generate_password_hash("user"), "role": "user"},
-      "admin": {"username": "admin1", "password": generate_password_hash("admin"), "role": "admin"}
+      "user1": {"username": "user1", "password": generate_password_hash("user"), "role": "user"},
+      "admin1": {"username": "admin1", "password": generate_password_hash("admin"), "role": "admin"}
   }
 
 @auth.verify_password
@@ -33,9 +33,8 @@ def login():
     password = request.json.get("password")
 
     if username in users and check_password_hash(users[username]["password"], password):
-        acces_token = create_access_token(identity={"username": username, "role": users[username]["role"]})
-        
-        return jsonify({"acces_token": acces_token})
+        access_token = create_access_token(identity={"username": username, "role": users[username]["role"]})
+        return jsonify({"access_token": access_token})
 
     return jsonify("Bad username or password"), 401
 
@@ -45,7 +44,7 @@ def jwt_protected():
     return jsonify("JWT Auth: Access Granted")
 
 @app.route("/admin-only")
-@jwt_required
+@jwt_required()
 def admin_only():
     current_user = get_jwt_identity()
     if current_user["role"] == "admin":
