@@ -15,3 +15,18 @@
 -- UPDATE cities SET state_id = 33 WHERE state_id = 1;
 -- SET FOREIGN_KEY_CHECKS = 1;
 -- DELETE FROM cities WHERE id = 13;
+
+USE hbtn_0d_tvshows;
+SELECT 
+    TABLE_NAME AS 'Table',
+    COLUMN_NAME AS 'Column',
+    DATA_TYPE AS 'Data Type',
+    COLUMN_TYPE AS 'Column Type',
+    IS_NULLABLE AS 'Is Nullable',
+    COLUMN_DEFAULT AS 'Default'
+FROM 
+    INFORMATION_SCHEMA.COLUMNS
+WHERE 
+    TABLE_SCHEMA = 'hbtn_0d_tvshows'
+ORDER BY 
+    TABLE_NAME, ORDINAL_POSITION;
