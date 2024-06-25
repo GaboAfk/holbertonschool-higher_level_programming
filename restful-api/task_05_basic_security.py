@@ -18,19 +18,21 @@ users = {
 def verify_password(username, password):
     if username in users and check_password_hash(users[username]["password"], password):
         return username
+    return None
 
 @app.route('/basic-protected')
 @auth.login_required
 def basic_protected():
-    return jsonify("Basic Auth: Access Granted")
+    return "Basic Auth: Access Granted"
 
 # curl -X POST -H "Content-Type: application/json" -d '{"username":"user", "password": "user"}' http://127.0.0.1:5000/login
 
 @app.route('/login', methods=["POST"])
 #@jwt_required()
 def login():
-    username = request.json.get("username")
-    password = request.json.get("password")
+    user = request.get_json()
+    username = user.get("username")
+    password = user.get("password")
 
     if username in users and check_password_hash(users[username]["password"], password):
         access_token = create_access_token(identity={"username": username, "role": users[username]["role"]})
