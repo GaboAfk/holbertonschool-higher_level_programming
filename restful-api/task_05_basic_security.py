@@ -10,15 +10,14 @@ app.config["JWT_SECRET_KEY"] = "1234"
 jwt = JWTManager(app)
 
 users = {
-      "user1": {"username": "user1", "password": generate_password_hash("user"), "role": "user"},
-      "admin1": {"username": "admin1", "password": generate_password_hash("admin"), "role": "admin"}
+      "user1": {"username": "user1", "password": generate_password_hash("password"), "role": "user"},
+      "admin1": {"username": "admin1", "password": generate_password_hash("password"), "role": "admin"}
   }
 
 @auth.verify_password
 def verify_password(username, password):
-    user = users.get(username)
-    if user and check_password_hash(users[username]["password"], password):
-        return user
+    if username in users and check_password_hash(users[username]["password"], password):
+        return username
     return None
 
 @app.route('/basic-protected')
