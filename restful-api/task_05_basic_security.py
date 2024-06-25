@@ -16,8 +16,9 @@ users = {
 
 @auth.verify_password
 def verify_password(username, password):
-    if username in users and check_password_hash(users[username]["password"], password):
-        return username
+    user = users.get(username)
+    if user and check_password_hash(users[username]["password"], password):
+        return user
     return None
 
 @app.route('/basic-protected')
@@ -51,8 +52,7 @@ def admin_only():
     current_user = get_jwt_identity()
     if current_user["role"] == "admin":
         return jsonify("Admin Access: Granted")
-    else:
-        return jsonify(""), 403
+    return jsonify(""), 403
 
 
 @jwt.unauthorized_loader
