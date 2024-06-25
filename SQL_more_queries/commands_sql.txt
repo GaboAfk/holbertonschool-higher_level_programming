@@ -1,8 +1,17 @@
--- SELECT * WHERE name = 'California' ORDER BY cities.id;
+-- lists all the cities of California that can be found in the database hbtn_0d_usa.
 -- DELETE FROM states WHERE id > 1
 -- (state.id(1), 'San Francisco'), (state.id(1), 'San Jose'), (state.id(2), 'Page'), (state.id(3), 'Paris'), (state.id(3), 'Houston'), (state.id(3), 'Dallas') 
 -- INSERT INTO cities (state_id, name) VALUES (
---    (SELECT id FROM states WHERE name = 'California'), 'San Francisco'
+--    (SELECT id FROM states WHERE name = 'Texas'), 'Dallas'
 -- );
--- SELECT * FROM states;
 -- SHOW CREATE TABLE cities;
+-- SELECT * FROM cities;
+-- INSERT INTO cities (state_id, name) VALUES (2, "Page"), (2, "Phoenix");
+-- UPGRADE cities SET state_id = 2 WHERE state_id = 3;
+-- SELECT * FROM cities ORDER BY id;
+-- SELECT * FROM states WHERE name = 'California';
+-- SET FOREIGN_KEY_CHECKS = 0;
+-- UPDATE states SET id = 33 WHERE id = 1;
+-- UPDATE cities SET state_id = 33 WHERE state_id = 1;
+-- SET FOREIGN_KEY_CHECKS = 1;
+-- DELETE FROM cities WHERE id = 13;
