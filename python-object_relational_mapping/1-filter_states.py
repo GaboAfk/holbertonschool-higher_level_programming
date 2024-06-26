@@ -19,7 +19,7 @@ if __name__ == "__main__":
     )
 
     c = db.cursor()
-    c.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id")
+    c.execute("SELECT * FROM states WHERE BINARY name LIKE 'N%' ORDER BY id")
 
     for state in c.fetchall():
         """if state[1][0] == "N":"""
