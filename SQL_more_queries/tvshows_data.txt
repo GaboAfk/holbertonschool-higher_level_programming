@@ -1,0 +1,76 @@
+
+
+id      name
+1       Drama
+2       Mystery
+3       Adventure
+4       Fantasy
+5       Comedy
+6       Crime
+7       Suspense
+8       Thriller
+show_id genre_id
+1       1
+1       2
+2       3
+2       1
+2       4
+3       5
+4       5
+5       5
+6       6
+6       1
+6       7
+6       8
+8       6
+8       1
+8       2
+8       7
+8       8
+10      5
+10      1
+id      title
+1       House
+2       Game of Thrones
+3       The Big Bang Theory
+4       New Girl
+5       Silicon Valley
+6       Breaking Bad
+7       Better Call Saul
+8       Dexter
+9       Homeland
+10      The Last Man on Earth
+
+SELECT
+    tv_shows.id,
+    tv_shows.title,
+    tv_show_genres.show_id,
+    tv_show_genres.genre_id,
+    tv_genres.id,
+    tv_genres.name
+FROM
+    tv_shows
+    JOIN tv_show_genres ON tv_shows.id = tv_show_genres.show_id
+    JOIN tv_genres ON tv_show_genres.genre_id = tv_genres.id;
+
+
+id      title                   show_id genre_id    id      name
+1       House                   1       1           1       Drama
+2       Game of Thrones         2       1           1       Drama
+6       Breaking Bad            6       1           1       Drama
+8       Dexter                  8       1           1       Drama
+10      The Last Man on Earth   10      1           1       Drama
+1       House                   1       2           2       Mystery
+8       Dexter                  8       2           2       Mystery
+2       Game of Thrones         2       3           3       Adventure
+2       Game of Thrones         2       4           4       Fantasy
+3       The Big Bang Theory     3       5           5       Comedy
+4       New Girl                4       5           5       Comedy
+5       Silicon Valley          5       5           5       Comedy
+10      The Last Man on Earth   10      5           5       Comedy
+6       Breaking Bad            6       6           6       Crime
+8       Dexter                  8       6           6       Crime
+6       Breaking Bad            6       7           7       Suspense
+8       Dexter                  8       7           7       Suspense
+6       Breaking Bad            6       8           8       Thriller
+8       Dexter                  8       8           8       Thriller
