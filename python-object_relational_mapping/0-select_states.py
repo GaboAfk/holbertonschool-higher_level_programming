@@ -1,6 +1,9 @@
 #!/usr/bin/python3
+"""select_states module
+"""
 import MySQLdb
 from sys import argv
+
 
 if __name__ == "__main__":
     username_ = argv[1]
