@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-"""select_states module
+"""lists all states from the database hbtn_0e_0_usa
 """
 import MySQLdb
 from sys import argv
 
 
 if __name__ == "__main__":
+    """pep8?"""
+
     username_ = argv[1]
     password_ = argv[2]
     database_ = argv[3]
