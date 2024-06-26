@@ -11,8 +11,8 @@ if __name__ == "__main__":
     database_ = argv[3]
 
 db = MySQLdb.connect(
-    host="localhost",#localhost está por default
-    port=3306,#3306 está por defecto
+    host="localhost",
+    port=3306,
     user=username_,
     password=password_,
     database=database_
