@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
     c = db.cursor()
     c.execute("SELECT * FROM states\
-               WHERE name LIKE BINARY '{}'\
+               WHERE BINARY name = '{}'\
                ORDER BY id".format(state_name))
 
     for state in c.fetchall():
