@@ -24,7 +24,7 @@ if __name__ == "__main__":
     state = session.query(State)\
         .filter(State.name == state_name).order_by(State.id).first()
     if state:
-        print(f"{state.id}: {state.name}")
+        print(state.id)
     else:
         print("Not found")
 
@@ -34,7 +34,8 @@ if __name__ == "__main__":
     for state in states:
         if state_name == state.name:
             match = True
-            print(f"{state.id}: {state.name}")
+            print(state.id)
+            break
     if not match:
         print("Not found")"""
 
