@@ -1,0 +1,17 @@
+#!/bin/bash
+_autocomplete_files(){
+	local cur=${COMP_WORDS[COMP_CWORD]}
+	COMPREPLY=( $(compgen -A file -- "$cur") )
+}
+complete -F _autocomplete_files -o filenames read
+
+echo 'file.py name?'
+read file
+
+echo -e "-------------------\n"
+echo "pycodestyle"
+pycodestyle "$file"
+
+echo -e "-------------------\n"
+echo "pydoc3"
+pydoc3 "$file"
