@@ -1,26 +1,48 @@
-
-
-# Main file content
-#from task_00_intro import generate_invitations
-
-# Read the template from a file
-with open('template.txt', 'r') as file:
-    template_content = file.read()
-
-# List of attendees
-attendees = [
-    {"name": "Alice", "event_title": "Python Conference", "event_date": "2023-07-15", "event_location": "New York"},
-    {"name": "Bob", "event_title": "Data Science Workshop", "event_date": "2023-08-20", "event_location": "San Francisco"},
-    {"name": "Charlie", "event_title": "AI Summit", "event_date": None, "event_location": "Boston"}
-]
-
-# Call the function with the template and attendees list
-generate_invitations(template_content, attendees)
+import os
 
 def generate_invitations(template, attendees):
+
     try:
-        for fields in attendees:
-            for field in fields:
-                template.replace(field[0], attendees[0]{field})
-    except:
-        ValueError
+        if not template:
+            raise TypeError("Template is empty, no output files generated.")
+
+        if not  isinstance(template, str):
+            raise TypeError("template is not a string")
+        
+        if not attendees:
+            raise TypeError("No data provided, no output files generated.")
+
+        if not isinstance(attendees, list) or\
+           not all(isinstance(att, dict) for att in attendees):
+            raise TypeError("attendees is not a list of dictionaries")
+
+        to_replace_name = "{name}"
+        to_replace_title = "{event_title}"
+        to_replace_date = "{event_date}"
+        to_replace_location = "{event_location}"
+
+        index = 0
+
+        for att in attendees:
+            index += 1
+            new_att_name = att.get("name") or "N/A"
+            new_att_title = att.get("event_title") or "N/A"
+            new_att_date = att.get("event_date") or "N/A"
+            new_att_location = att.get("event_location") or "N/A"
+
+            new_invitation = template.replace(to_replace_name, new_att_name)\
+                                    .replace(to_replace_title, new_att_title)\
+                                    .replace(to_replace_date, new_att_date)\
+                                    .replace(to_replace_location, new_att_location)
+
+            file = f"output_{index}.txt"
+            if os.path.exists(f"./{file}"):
+                print(file, "already exists")
+                continue
+
+            with open(f"output_{index}.txt", "w") as wfile:
+                wfile.write(new_invitation)
+    
+    except Exception as e:
+        print(f"{e}")
+        return
