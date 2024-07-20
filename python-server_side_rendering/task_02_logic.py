@@ -17,9 +17,14 @@ def contact():
 
 @app.route("/items")
 def items():
-    with open("items.json") as f:
-        data = json.load(f)
-        item_list = data["items"]
+    try:
+        item_list = []
+        with open("items.json") as f:
+            data = json.load(f)
+        if isinstance(data, dict) and "items" in data:
+            item_list = data["items"]
+    except (json.decoder.JSONDecodeError, FileNotFoundError) as e:
+        print(f"error loading items.json: {e}")
     return render_template("items.html", item_list=item_list)
 
 if __name__ == "__main__":
