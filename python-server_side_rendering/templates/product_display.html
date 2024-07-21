@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+  </head>
+  <body>
+    {% include 'header.html' %}
+    <h1>Products List</h1>
+    {% if error %}
+      <p>{{ error }}</p>
+    {% else %}
+      {% if product_list %}
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for products in product_list %}
+              <tr>
+                <td> {{ products.name }} </td>
+                <td> {{ products.category }} </td>
+                <td> {{ products.price }} </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <p>No products found</p>
+      {% endif %}
+    {% endif %}
+  {% include 'footer.html' %}
+  </body>
+</html>
