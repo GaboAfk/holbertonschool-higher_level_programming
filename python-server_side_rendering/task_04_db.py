@@ -33,7 +33,7 @@ def read_json(json_file_path):
         with open(json_file_path) as f:
             return json.load(f)
     
-def read_cvs(csv_file_path):
+def read_csv(csv_file_path):
     with open(csv_file_path) as f:
         readfile = csv.DictReader(f)
         product_list = []
@@ -84,7 +84,7 @@ def products():
             #print("product_list JSON")
             #print(product_list)
         elif source == "csv":
-            product_list = read_cvs("products.csv")
+            product_list = read_csv("products.csv")
         elif source == "sql":
             product_list = read_sql("products.db")
             #print("product_list SQL")
@@ -104,7 +104,7 @@ def products():
                 product_id = [items]
                 break
         if product_id is None:
-                return render_template("product_display.html", error="Product ID not found")
+                return render_template("product_display.html", error="Product not found")
         else:
             product_list = product_id
 
