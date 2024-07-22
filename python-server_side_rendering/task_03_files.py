@@ -69,14 +69,14 @@ def products():
     except (json.decoder.JSONDecodeError, FileNotFoundError) as e:
         print(f"error loading products.{source}: {e}")
 
-    if id is not None:
+    if id:
         product_id = None
         for items in product_list:
             if items.get("id") == int(id):
                 product_id = [items]
                 break
         if product_id is None:
-                return render_template("product_display.html", error="Product ID not found")
+                return render_template("product_display.html", error="Product not found")
         else:
             product_list = product_id
 
