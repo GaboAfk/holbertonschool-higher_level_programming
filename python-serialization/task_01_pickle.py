@@ -33,3 +33,16 @@ class CustomObject():
         except Exception as e:
             print(f"Deserialization error: {e}")
             return None
+
+""" @classmethod
+    def deserialize(cls, filename):
+        try:
+            with open(filename, "rb") as file:
+                load = pickle.load(file)
+                obj = cls.__new__(cls)  # Crear una nueva instancia sin llamar a __init__
+                for key, value in load.items():
+                    setattr(obj, key, value)  # Establecer cada atributo en la nueva instancia
+                return obj
+        except Exception as e:
+            print(f"Deserialization error: {e}")
+            return None """
